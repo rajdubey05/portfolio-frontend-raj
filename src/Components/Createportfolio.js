@@ -1,8 +1,11 @@
 import { Formik } from "formik";
+import app_config from "../config";
 import "./createportfolio.css";
 
 const Createportfolio = () => {
-  const url = "http://localhost:5000";
+  const url = app_config.api_url;
+
+  
   const createportfolioform = {
     title: "",
     heroimage: "",

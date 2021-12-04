@@ -6,6 +6,7 @@ import SignUp from './Components/signup';
 import Header from './Components/header'
 import Createportfolio from './Components/Createportfolio';
 import Addvideo from './Components/addVideo';
+import ListVideos from './Components/listvideos';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Route path="/signup" component={SignUp} />
       <Route path="/portfolio" component={Createportfolio}/>
       <Route path="/addvideo" component={Addvideo}/>
+      <Route path="/listvideos" component={ListVideos}/>
     
     </BrowserRouter>
    

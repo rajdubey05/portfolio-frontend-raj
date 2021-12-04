@@ -4,6 +4,8 @@ import { Formik } from "formik";
 // import app_config from "../config";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import App from "../App";
+import app_config from "../config";
 
 const Addvideo = () => {
   const videoform = {
@@ -13,7 +15,7 @@ const Addvideo = () => {
     file: "",
   };
 
-  const url = "http://localhost:5000";
+  const url = app_config.api_url
 
   const [thumbnail, setThumbnail] = useState("");
   const [video, setVideo] = useState("");

@@ -1,6 +1,11 @@
 * { 
     font-family: "ubuntu";
 }
+.image-back{
+    background: url(./onelink.png);
+    background-size: cover;
+    
+}
 body {
     background: linear-gradient(to right bottom, purple , rgb(158, 131, 131));
     height: 100vh;

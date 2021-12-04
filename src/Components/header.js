@@ -1,12 +1,18 @@
 import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import {Switch} from "@mui/material"
+import { ProductContext } from "../productContext";
 // import { ProductContext } from "../productContext";
 
 const Header = (props) => {
 
-    const [loggedin, setloggedin] = useState(true);
+    const [loggedin, setLoggedin] = useState(false);
     // const {productData} = useContext(ProductContext)
+
+    const logout = () => {
+        setLoggedin(false);
+        sessionStorage.removeItem('user');
+    }
 
     const displayLoggedIn = () => {
         if(loggedin){
@@ -58,7 +64,7 @@ const Header = (props) => {
                      <NavLink className="nav-link" activeclassName="active" aria-current="page" to="/home">Home</NavLink>
                  </li>
 
-                 {displayLoggedIn()}
+                 
                  
                 <li className="nav-item">
                      <NavLink className="nav-link" activeclassName="active" to="/gallery">Gallery</NavLink>
@@ -73,6 +79,7 @@ const Header = (props) => {
                    {/* <button className="btn btn-dark">{productData.length}</button> */}
 
                 </li>
+                {displayLoggedIn()}
                
                
                  <li className="nav-item">

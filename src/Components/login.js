@@ -1,7 +1,15 @@
+import { SwipeableDrawer, TextField } from "@mui/material";
 import { Formik } from "formik";
+import { useContext, useState } from "react";
+import Swal from "sweetalert2";
+import { ProductContext } from "../productContext";
 import "./login.css";
 const Login = () => {
   const url = "http://localhost:5000";
+
+  const [loggedin, setLoggedin] = useState(false)
+
+  // const setLoggedin= useContext(ProductContext)
 
   const loginForm = {
     email: "",
@@ -10,25 +18,50 @@ const Login = () => {
 
   const loginSubmit = (values) => {
     console.log(values);
-    fetch(url + "/user/login", {
-      method: "POST",
+
+    const reqOpt = {
+      method: 'POST',
       body: JSON.stringify(values),
-      headers: { "Content-Type": "application/json" },
-    }).then((res) => {
-      if (res.status == 200) {
-        console.log("loggedin");
-        window.location.replace("/portfolio");
-      } else {
-        console.log("login failed");
+      headers: {
+        "Content-type": "application/json",
       }
-    });
-  };
+    }
+
+    fetch(url+"/user/backendlogin", reqOpt)
+    .then(res =>{
+      if(res.status==200){
+        console.log("login Success")
+        res.json()
+        .then((data) => {
+          sessionStorage.setItem('user', JSON.stringify(data));
+          setLoggedin(true);
+        })
+
+        Swal.fire({
+          icon: 'success',
+          title: 'success',
+          text: 'loggedin successfully'
+        })
+      }else if (res.status==300){
+        console.log("Login failed")
+        Swal.fire({
+          icon: "failed",
+          title: "failed",
+          text: "login failed"
+        })
+      }
+    })
+
+  }
+
+ 
 
   return (
     <div className="login-container container-fluid">
       <div className="col-md-10 col-sm-10 mx-auto">
         <div className="my-card">
-          <img className="form-logo" src="logos.png" alt="png" />
+          <img className="form-logo" src="onelink.png" alt="png" />
+          <div class="image-back"></div>
 
           <div className="subheader">
             <h3>Welcome..!</h3>

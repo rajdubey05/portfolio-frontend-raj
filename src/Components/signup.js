@@ -29,7 +29,7 @@ const SignUp = () => {
                 <label for="fullname" class="mt-3">
                   Full Name
                 </label>
-                <input
+                <TextField
                   id="fullname"
                   type="text"
                   class="form-control"
@@ -39,7 +39,7 @@ const SignUp = () => {
                 <label for="password" class="mt-3">
                   Password
                 </label>
-                <input
+                <TextField
                   id="password"
                   type="password"
                   class="form-control"
